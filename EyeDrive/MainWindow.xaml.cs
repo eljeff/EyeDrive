@@ -404,6 +404,7 @@ namespace EyeDrive
             Stop();
 
             // Launch settings window
+            /*
             var settingsWindow = new Window()
             {
                 Owner = this
@@ -411,6 +412,7 @@ namespace EyeDrive
             settingsWindow.Loaded += SettingsWindow_Loaded;
             settingsWindow.Unloaded += SettingsWindow_Unloaded;
             settingsWindow.ShowDialog();
+            */
         }
 
         private void EyeGazeOnButton_OnClick(object sender, EventArgs e)
@@ -419,7 +421,8 @@ namespace EyeDrive
 
             DrivingButtonsEnabled = true;
             EyesOffStopsDrivingEnabled = true;
-
+            Application.Current.Shutdown();
+            /*
             // Button state needs to be reset
             EyeGazeOnButton.Visibility = Visibility.Collapsed;
             ForwardButton.Visibility = Visibility.Visible;
@@ -429,6 +432,8 @@ namespace EyeDrive
             LeftButton.Visibility = Visibility.Visible;
             ReverseButton.Visibility = Visibility.Visible;
             Grid.SetRow(StopButton, 5);
+            */
+
         }
 
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
