@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using Tobii.Interaction;
+using Tobii.Interaction.Wpf;
 
 namespace EyeDrive
 {
@@ -48,6 +50,23 @@ namespace EyeDrive
 
                 MessageBox.Show(ex.ToString());
             };
+        }
+    }
+    public partial class App : Application
+    {
+        private Host _host;
+        private WpfInteractorAgent _wpfInteractorAgent;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            _host = new Host();
+            _wpfInteractorAgent = _host.InitializeWpfAgent();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _host.Dispose();
+            base.OnExit(e);
         }
     }
 }
