@@ -15,8 +15,9 @@
 
         <DockPanel Name="ControlCanvas" Width="{Binding ActualWidth, ElementName=Canvas}" Height="{Binding ActualHeight, ElementName=Canvas}" Canvas.ZIndex="9">
 
-            <Grid Margin="100,0" tobii:Behaviors.IsGazeAware="True">
-                <Grid.Style>
+            <Grid Margin="100,0">
+            <!--Grid Margin="100,0" tobii:Behaviors.IsGazeAware="True">
+                    <Grid.Style>
                     <Style TargetType="Grid">
                         <Setter Property="Background" Value="White" />
 
@@ -26,7 +27,7 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </Grid.Style>
+                </Grid.Style-->
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -59,10 +60,10 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="ForwardLeftButton" Opacity="0.2" Grid.Row="1" Grid.Column="2" 
+                <Button x:Name="ForwardLeftButton" Grid.Row="1" Grid.Column="2" 
                         Content="&#xe74a;" Background="AliceBlue" FontFamily="Segoe MDL2 Assets" 
                         FontSize="64" Grid.ColumnSpan="3" Grid.RowSpan="6" Click="ForwardLeft_Click" 
-                        Margin="20" IsEnabled="False">
+                        Margin="20" IsEnabled="True" tobii:Behaviors.IsGazeAware="True">
                     <Button.LayoutTransform>
                         <RotateTransform Angle="-45" />
                     </Button.LayoutTransform>
@@ -71,9 +72,12 @@
                     </Button.Resources>
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Opacity" Value="1.0"/>
+                            <Setter Property="Opacity" Value="0.2"/>
                             <Style.Triggers>
                                 <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                                    <Setter Property="Opacity" Value="1.0" />
+                                </Trigger>
+                                <Trigger Property="tobii:Behaviors.HasGaze" Value="False">
                                     <Setter Property="Opacity" Value="0.2" />
                                 </Trigger>
                             </Style.Triggers>
@@ -117,7 +121,10 @@
 
                 <!--<Button x:Name="ModeButton" Opacity="0.2" Grid.Row="2" Grid.Column="0" Content="&#xf047;" Background="Blue" Foreground="Beige" FontFamily="./fonts/#FontAwesome" FontSize="64" Grid.RowSpan="2" Click="Mode_Click" />-->
 
-                <Button x:Name="EyeGazeOnButton" Opacity="0.2" Grid.Row="2" Grid.Column="0" Content="X" Background="Blue" Foreground="Beige" FontFamily="Segoe UI Symbol" FontSize="48" Grid.RowSpan="2"  Click="EyeGazeOnButton_OnClick"/>
+                <Button x:Name="EyeGazeOnButton" Opacity="0.2" Grid.Row="2" Grid.Column="0" 
+                        Content="X" Background="Blue" Foreground="Beige" 
+                        FontFamily="Segoe UI Symbol" FontSize="48" Grid.RowSpan="2"  
+                        Click="EyeGazeOnButton_OnClick"/>
 
                 <Button x:Name="SettingsButton" Opacity="0.2" Grid.Row="6" Grid.Column="0" Content="&#xe115;" Background="Blue" Foreground="Beige" FontFamily="Segoe UI Symbol" FontSize="48" Grid.RowSpan="2"  Click="Settings_Click" />
 
