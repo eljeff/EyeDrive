@@ -60,6 +60,24 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
+                <Button x:Name="TestButton" Grid.Row="0" Grid.Column="2" 
+                        Content="&#xe73a;" Background="White" FontFamily="Segoe MDL2 Assets" 
+                        FontSize="64" Grid.ColumnSpan="3" Grid.RowSpan="3" 
+                        Margin="20" IsEnabled="True" tobii:Behaviors.IsGazeAware="True">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Opacity" Value="0.2"/>
+                            <Style.Triggers>
+                                <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                                    <Setter Property="Opacity" Value="1.0" />
+                                </Trigger>
+                                <Trigger Property="tobii:Behaviors.HasGaze" Value="False">
+                                    <Setter Property="Opacity" Value="0.2" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button x:Name="ForwardLeftButton" Grid.Row="1" Grid.Column="2" 
                         Content="&#xe74a;" Background="AliceBlue" FontFamily="Segoe MDL2 Assets" 
                         FontSize="64" Grid.ColumnSpan="3" Grid.RowSpan="6" Click="ForwardLeft_Click" 
